@@ -12,12 +12,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.jetpackpractical.ui.theme.JetpackPracticalTheme
 
@@ -31,7 +33,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Black // Netflix dark theme
                 ) {
-                    NetflixHomeScreen()
+//                    NetflixHomeScreen()
+                    LearnRowColumnBox()
                 }
             }
         }
@@ -94,10 +97,46 @@ fun MovieRow() {
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun PreviewNetflixHomeScreen() {
-    JetpackPracticalTheme {
-        NetflixHomeScreen()
+fun LearnRowColumnBox() {
+//    Text(text = "Hello Column")
+//    Text(text = "Hello Column")
+//    Text(text = "Hello Column")
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(text = "Hello Column 1")
+        Text(text = "Hello Column 2")
+    }
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Text(text = "Hello Column 1")
+        Text(text = "Hello Column 2")
+    }
+
+    Box(
+        modifier = Modifier.fillMaxSize().background(Color.Yellow),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(modifier = Modifier.height(300.dp).width(300.dp).background(Color.Blue)) {
+            Text(
+                text = "Hello Box",
+                modifier = Modifier.align(Alignment.Center),
+                Color.White,
+                fontSize = 30.sp
+            )
+        }
+    }
+    @Preview(showBackground = true)
+    @Composable
+    fun PreviewNetflixHomeScreen() {
+        JetpackPracticalTheme {
+            NetflixHomeScreen()
+        }
     }
 }
